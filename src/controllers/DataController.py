@@ -20,9 +20,9 @@ class DataController(BaseController):
         # Replace spaces and special characters with underscores
         processed_filename = re.sub(r'[^\w\-_\.]', '_', original_filename)
         random_key = self.generateRandomKey()
-        unique_filename = f"{processed_filename}_{random_key}"
+        unique_filename = f"{random_key}_{processed_filename}"
         while os.path.exists(os.path.join(self.files_dir, project_id, unique_filename)):
             random_key = self.generateRandomKey()
-            unique_filename = f"{processed_filename}_{random_key}"
+            unique_filename = f"{random_key}_{processed_filename}"
         file_path = os.path.join(self.files_dir, project_id, unique_filename)
         return file_path , unique_filename
